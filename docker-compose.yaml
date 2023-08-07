@@ -1,0 +1,7 @@
+version: '3'
+services:
+  client:
+    image: hakuna03/learning-management-system-client:development
+    build:
+      context: ./client
+
