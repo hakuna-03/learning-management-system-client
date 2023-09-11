@@ -1,7 +1,7 @@
-version: '3'
+version: "3"
 services:
   client:
+    container_name: lms-client
     image: hakuna03/learning-management-system-client:development
-    build:
-      context: ./client
-
+    ports:
+      - "3000:3000"
