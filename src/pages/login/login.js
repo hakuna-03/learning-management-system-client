@@ -2,6 +2,7 @@ import "./login.css";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../components/navbar/navbar";
 function Login() {
   const baseURL = process.env.REACT_APP_BASE_URL;
   const [email, setEmail] = useState("");
@@ -42,6 +43,8 @@ function Login() {
   useEffect(() => {}, [errorMessage]);
 
   return (
+    <>
+    <Navbar />
     <div className="login-page">
       <div className="login-container">
         <h1>Login</h1>
@@ -63,6 +66,7 @@ function Login() {
         {errorMessage && <p className="error-label">{errorMessage}</p>}
       </div>
     </div>
+    </>
   );
 }
 
