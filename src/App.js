@@ -9,6 +9,9 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import Login from "./pages/login/login";
+import Home from "./pages/home/home.js";
+import AddProfessor from "./pages/addProfessor/addProfessor.jsx";
+
 import Home from "./pages/home/home";
 
 const Layout = () => {
@@ -70,5 +73,9 @@ function App() {
     </>
   );
 }
+
+
+
+
 
 export default App;
