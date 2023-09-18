@@ -15,9 +15,9 @@ function Home(props) {
   return (
     <>
       <Navbar />
-      {location.state.role === "A" && <AdminHome />}
-      {location.state.role === "S" && <StudentHome />}
-      {location.state.role === "P" && <ProfessorHome />}
+      {location.state.role === "admin" && <AdminHome />}
+      {location.state.role === "student" && <StudentHome />}
+      {location.state.role === "professor" && <ProfessorHome />}
     </>
   );
 }

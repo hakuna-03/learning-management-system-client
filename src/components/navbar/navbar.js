@@ -8,25 +8,6 @@ function Navbar() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    const localStorageListener = (event) => {
-      console.log(event);
-      if (event.key === "user") {
-        const localUser = localStorage.getItem("user");
-        setUser(JSON.parse(localUser));
-        setIsLoggedIn(true);
-      }
-    };
-
-    window.addEventListener("storage", localStorageListener);
-  }, []);
-
-  const localStorageListener = (event) => {
-    console.log(event);
-  };
-
-  window.addEventListener("storage", localStorageListener);
-
-  useEffect(() => {
     // Get the user's login status from localStorage.
     const localUser = localStorage.getItem("user");
     if (localUser) {
