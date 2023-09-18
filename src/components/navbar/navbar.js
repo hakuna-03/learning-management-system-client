@@ -1,8 +1,6 @@
 import "./navbar.css";
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import userIcon from "../../public/user.png";
-import logo from "../../public/logo.png";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -30,16 +28,16 @@ function Navbar() {
     <div className="nav">
       <div className="logo">
         {user.role ? (
-          <Link to="/home" state={user.role}>
-            <img src={logo} alt="Logo" />
+          <Link to="/home" state={{ role: user.role }}>
+            <img src="logo.png" alt="Logo" />
           </Link>
         ) : (
-          <img src={logo} alt="Logo" />
+          <img src="logo.png" alt="Logo" />
         )}
       </div>
       {isLoggedIn && (
         <div className="user-info">
-          <img src={userIcon} alt={user.name} />
+          <img src="user.png" alt={user.name} />
           <p>{user.name}</p>
           <button className="logout-botton" onClick={logout}>
             Logout
