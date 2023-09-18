@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import "./addProfessor";
-import "./bootstrap.min.css";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
-
+import './addProfessor.css'
+import 'react-toastify/dist/ReactToastify.css';
+import "bootstrap/dist/css/bootstrap.min.css"
 const AddProfessor = () => {
+  const baseURL = process.env.REACT_APP_BASE_URL;
+  console.log(baseURL);
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -14,7 +15,7 @@ const AddProfessor = () => {
     collageId: "",
     natId: "",
     enrollmentDate: "",
-    gpa: null,
+    gpa: 0,
   });
 
   const handlerChange = e => {
@@ -46,9 +47,10 @@ const AddProfessor = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.post("/admin/student", inputs);
+      await axios.post(`${baseURL}professor`, inputs);
       successNotify();
     } catch (err) {
+      console.log(err);
       badNotify();
     }
   };
@@ -57,7 +59,7 @@ const AddProfessor = () => {
     //  <!-- start admin add student -->
     <section className="add-user-section col-sm-mb-5" id="add-user">
       <div className="container">
-        <h2 className="title">Enter Data</h2>
+        <h2 className="title">Enter Professor Data</h2>
         <form onSubmit={handleSubmit}
         >
           <div className="row">
@@ -101,19 +103,6 @@ const AddProfessor = () => {
                   required
                 />
               </div>
-              <div className="input-box">
-                <span htmlFor="lable" className="form-label">
-                  Role
-                </span>
-                <input
-                  type="text"
-                  name="role"
-                  className="form-control"
-                  placeholder="Enter password"
-                  onChange={handlerChange}
-                  required
-                />
-              </div>
             </div>
             <div className="col-md-6">
               <div className="input-box">
@@ -142,30 +131,6 @@ const AddProfessor = () => {
                   required
                 />
               </div>
-              <div className="input-box">
-                <span htmlFor="lable" className="form-label">
-                  enrollment Date
-                </span>
-                <input
-                  type="date"
-                  className="form-control"
-                  name="enrollmentDate"
-                  onChange={handlerChange}
-                  required
-                />
-              </div>
-              <div className="input-box">
-                <span htmlFor="lable" className="form-label">
-                  GPA
-                </span>
-                <input
-                  type="float"
-                  className="form-control"
-                  name="gpa"
-                  placeholder="Enter student's gpa"
-                  onChange={handlerChange}
-                />
-              </div>
             </div>
             <button
               className="submit-btn m-auto w-25 mt-3"
@@ -188,7 +153,6 @@ const AddProfessor = () => {
         </form>
       </div>
     </section>
-    // <!-- end admin add student -->
   );
 };
 
