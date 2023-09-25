@@ -2,49 +2,50 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import Navbar from "../../components/navbar/Navbar";
-import "./addProfessor.css";
-import "react-toastify/dist/ReactToastify.css";
+
+import "./Student.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-const AddProfessor = () => {
-  const baseURL = process.env.REACT_APP_BASE_URL;
-  console.log(baseURL);
+import "react-toastify/dist/ReactToastify.css";
+
+const successNotify = () =>
+  toast.success("User added successfully!", {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+const badNotify = () =>
+  toast.error("This user already exist", {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+const AddStudent = () => {
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
     password: "",
-    Role: "",
     collageId: "",
     natId: "",
-    enrollmentDate: "",
-    gpa: 0,
+    gpa: null,
   });
 
   const handlerChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const successNotify = () =>
-    toast.success("User added successfully!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
-  const badNotify = () =>
-    toast.error("This user already exist", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
+  const baseUrl = process.env.REACT_APP_BASE_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,10 +55,9 @@ const AddProfessor = () => {
       headers: { Authorization: `Bearer ${user.token}` },
     };
     try {
-      axios.post(`${baseURL}professor`, inputs, config);
+      axios.post(`${baseUrl}/admin/student`, inputs, config);
       successNotify();
     } catch (err) {
-      console.log(err);
       badNotify();
     }
   };
@@ -65,9 +65,10 @@ const AddProfessor = () => {
   return (
     <>
       <Navbar />
+
       <section className="add-user-section col-sm-mb-5" id="add-user">
         <div className="container">
-          <h2 className="title">Enter Professor Data</h2>
+          <h2 className="title">Enter Data</h2>
           <form onSubmit={handleSubmit}>
             <div className="row">
               <div className="col-md-6">
@@ -138,6 +139,21 @@ const AddProfessor = () => {
                     required
                   />
                 </div>
+                <div className="input-box">
+                  <span htmlFor="lable" className="form-label">
+                    GPA
+                  </span>
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="gpa"
+                    placeholder="Enter student's gpa"
+                    step="0.01"
+                    min="0"
+                    max="5"
+                    onChange={handlerChange}
+                  />
+                </div>
               </div>
               <button className="submit-btn m-auto w-25 mt-3">Submit</button>
               <ToastContainer
@@ -160,4 +176,4 @@ const AddProfessor = () => {
   );
 };
 
-export default AddProfessor;
+export default AddStudent;

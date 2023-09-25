@@ -4,7 +4,7 @@ import ProfessorHome from "./professor-home/professor-home";
 import { useEffect } from "react";
 
 import { useLocation } from "react-router-dom";
-import Navbar from "../../components/navbar/navbar";
+import Navbar from "../../components/navbar/Navbar";
 
 
 function Home(props) {
