@@ -55,7 +55,7 @@ const AddStudent = () => {
       headers: { Authorization: `Bearer ${user.token}` },
     };
     try {
-      axios.post(`${baseUrl}/admin/student`, inputs, config);
+      await axios.post(`${baseUrl}/admin/student`, inputs, config);
       successNotify();
     } catch (err) {
       badNotify();

@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 const AddProfessor = () => {
   const baseURL = process.env.REACT_APP_BASE_URL;
+  console.log(baseURL)
   console.log(baseURL);
   const [inputs, setInputs] = useState({
     name: "",
@@ -15,7 +16,7 @@ const AddProfessor = () => {
     Role: "",
     collageId: "",
     natId: "",
-    enrollmentDate: "",
+    enrollmentDate: new Date(),
     gpa: 0,
   });
 
@@ -54,7 +55,8 @@ const AddProfessor = () => {
       headers: { Authorization: `Bearer ${user.token}` },
     };
     try {
-      axios.post(`${baseURL}professor`, inputs, config);
+      console.log(`${baseURL}/admin/professor`)
+      await axios.post(`${baseURL}/admin/professor`, inputs, config);
       successNotify();
     } catch (err) {
       console.log(err);
