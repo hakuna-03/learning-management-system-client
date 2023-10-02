@@ -19,6 +19,8 @@ function AdminHome(){
                 Add Student</Link>
               <Link to="/admin/professor" className="start-btn btn">
                 Add Professor</Link>
+              <Link to="/admin/courses" className="start-btn btn mt-3">
+                Add Course</Link>
             </div>
           </div>
           <div className="col-md-7">

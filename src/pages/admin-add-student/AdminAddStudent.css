@@ -98,12 +98,6 @@ section {
   align-items: center;
   justify-content: center;
 }
-.add-user-section .add-user-img {
-  width: 60%;
-}
-.add-user-section .add-user-img img {
-  width: 100%;
-}
 
 .container .input-box {
   margin-top: 15px;
@@ -119,6 +113,7 @@ section {
   font-size: 20px;
   border: none;
   cursor: pointer;
+  width: 50%;
   border-radius: 4px;
   background-color: var(--main-color);
   transition: var(--main-transition);
@@ -146,6 +141,9 @@ section {
 }
 @media (max-width: 767px) {
 /* add-user section */
+  .add-user-section {
+    padding: 15px 0;
+  }
   .add-user-section .container {
     width: 100%;
   }

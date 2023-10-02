@@ -3,12 +3,12 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import Navbar from "../../components/navbar/Navbar";
 
-import "./Student.css";
+import "./AdminAddStudent.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 
-const successNotify = () =>
-  toast.success("User added successfully!", {
+const successNotify = (message) =>
+  toast.success(message, {
     position: "top-center",
     autoClose: 5000,
     hideProgressBar: false,
@@ -18,6 +18,7 @@ const successNotify = () =>
     progress: undefined,
     theme: "colored",
   });
+
 
 const badNotify = (message) =>
   toast.error(message, {
@@ -64,8 +65,8 @@ const AddStudent = () => {
       headers: { Authorization: `Bearer ${user.token}` },
     };
     try {
-      await axios.post(`${baseUrl}/admin/student`, inputs, config);
-      successNotify();
+      const res = await axios.post(`${baseUrl}/admin/student`, inputs, config);
+      successNotify(res.data.message);
     } catch (err) {
       console.log(err);
       const errorMessage = handelError (err);
@@ -77,7 +78,7 @@ const AddStudent = () => {
     <>
       <Navbar />
 
-      <section className="add-user-section col-sm-mb-5" id="add-user">
+      <section className="add-user-section" id="add-user">
         <div className="container">
           <h2 className="title">Enter Student Data</h2>
           <form onSubmit={handleSubmit}>
@@ -166,7 +167,7 @@ const AddStudent = () => {
                   />
                 </div>
               </div>
-              <button className="submit-btn m-auto w-25 mt-3">Submit</button>
+              <button className="submit-btn m-auto mt-3">Submit</button>
               <ToastContainer
                 position="top-center"
                 autoClose={5000}
