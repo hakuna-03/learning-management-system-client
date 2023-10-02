@@ -19,10 +19,10 @@ const successNotify = () =>
     theme: "colored",
   });
 
-const badNotify = () =>
-  toast.error("This user already exist", {
+const badNotify = (message) =>
+  toast.error(message, {
     position: "top-center",
-    autoClose: 5000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -47,6 +47,15 @@ const AddStudent = () => {
 
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
+  const handelError = (err) => {
+
+    let error = err.response.data;
+    let message;
+    if (!error.errors) message = error.message;
+    else message = error.errors[0].msg;
+    return message;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     var user = localStorage.getItem("user");
@@ -58,8 +67,10 @@ const AddStudent = () => {
       await axios.post(`${baseUrl}/admin/student`, inputs, config);
       successNotify();
     } catch (err) {
-      badNotify();
-    }
+      console.log(err);
+      const errorMessage = handelError (err);
+      badNotify(errorMessage);
+    } 
   };
 
   return (
@@ -68,7 +79,7 @@ const AddStudent = () => {
 
       <section className="add-user-section col-sm-mb-5" id="add-user">
         <div className="container">
-          <h2 className="title">Enter Data</h2>
+          <h2 className="title">Enter Student Data</h2>
           <form onSubmit={handleSubmit}>
             <div className="row">
               <div className="col-md-6">
