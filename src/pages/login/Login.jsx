@@ -20,7 +20,6 @@ function Login() {
           // The login was successful. Get the user data from the response and store it in local storage.
           const data = response.data;
           localStorage.setItem("user", JSON.stringify(data));
-          localStorage.setItem("isLoggedIn", true);
           navigate("/home", { state: { role: data.role } });
         }
       })

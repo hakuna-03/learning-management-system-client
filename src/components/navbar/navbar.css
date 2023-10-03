@@ -14,6 +14,7 @@
 }
 
 .logo img {
+  padding: 2px;
   margin-left: 10px;
   height: 50px;
   width: 65px;
@@ -35,12 +36,26 @@
   margin: auto;
 }
 
-.logout-botton {
-  background-color: #007bff;
-  color: #fff;
-  font-size: 16px;
+.logout-btn {
+  padding: 5px 15px;
+  color: #2196f3;
+  border-color: #2196f3;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
   cursor: pointer;
-  width: 60px;
-  height: 40px;
-  border: none;
+  border: 1px solid #2196f3;
+  border-radius: 0.25rem;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transform-origin: left;
+}
+.logout-btn:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: #2196f3d6;
+  border: 1px solid #2196f3;
+  transform: scaleX(1.1);
 }
