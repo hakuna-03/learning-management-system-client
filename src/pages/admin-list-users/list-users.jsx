@@ -47,6 +47,11 @@ function ListUsers() {
             Add Student
           </Link>
         )}
+        {role === "professor" && (
+          <Link to="/admin/professor" className="start-btn btn add-user">
+            Add Professor
+          </Link>
+        )}
         <h2 className="title">Collage {role}s:</h2>
         {students.length > 0 ? (
           <dev className="grid-container">
@@ -55,7 +60,7 @@ function ListUsers() {
             })}
           </dev>
         ) : (
-          <NoUsers />
+          <NoUsers role={role} />
         )}
       </div>
     </>
