@@ -34,8 +34,8 @@ function ProfessorClasses() {
   return (
     <>
       <Navbar />
-      <div claseName="container">
-        <h2 claseName="title">Professor Classes:</h2>
+      <div className="container">
+        <h2 className="title">Professor Classes:</h2>
         {classes.length > 0 ? (
           <dev className="grid-container">
             {classes.map((el) => {
