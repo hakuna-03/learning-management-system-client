@@ -4,6 +4,7 @@ import AddProfessor from "./pages/addProfessor/addProfessor";
 import Login from "./pages/login/Login";
 import Home from "./pages/home/Home";
 import ProfessorClasses from "./pages/professor-courses/professor-classes";
+import ListUsers from "./pages/admin-list-users/list-users";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/admin/student" element={<AddStudent />} />
           <Route path="/admin/professor" element={<AddProfessor />} />
+          <Route path="/admin/list-users" element={<ListUsers />} />
           <Route path="/professors/classes" element={<ProfessorClasses />} />
         </Routes>
       </div>

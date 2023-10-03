@@ -1,0 +1,23 @@
+body {
+  font-family: sans-serif;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: auto;
+}
+
+.container .add-user {
+  width: 20%;
+  margin: 40px auto 10px auto;
+}
+.container h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}

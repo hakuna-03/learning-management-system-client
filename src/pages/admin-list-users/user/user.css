@@ -1,0 +1,20 @@
+.user-container {
+  border-radius: 15px;
+  background-color: rgb(244, 244, 244);
+  padding: 20px;
+}
+
+.user-container p {
+  margin: 0px;
+}
+.user-container .course-description {
+  color: rgb(63, 61, 61);
+  font-weight: 600;
+}
+.user-container .email {
+  color: rgb(33, 33, 33);
+  font-weight: normal;
+}
+.user-container .enrollment_date {
+  color: gray;
+}
