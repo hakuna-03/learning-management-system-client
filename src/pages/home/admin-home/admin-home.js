@@ -26,9 +26,14 @@ function AdminHome() {
               >
                 Students
               </Link>
-              <Link to="/admin/professor" className="start-btn btn">
-                Add Professor
+              <Link
+                to="/admin/list-users"
+                className="start-btn btn"
+                state={{ role: "professor" }}
+              >
+                Professors
               </Link>
+              
             </div>
           </div>
           <div className="col-md-7">

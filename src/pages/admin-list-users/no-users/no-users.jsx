@@ -2,7 +2,7 @@ function NoUsers(props) {
   return (
     <>
       <div>
-        <h1>NO {props.users} Avalilable</h1>
+        <h1>NO {props.role}s avalilable</h1>
       </div>
     </>
   );
